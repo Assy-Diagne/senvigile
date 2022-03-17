@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alarm;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class PageimvidController extends Controller
 {
-       public function imvid()
+    public function imvid()
     {
-        return view('PageImVid');
-}}
+        $videos = Video::all();
+
+        $alarmes = Alarm::all();
+
+        return view('PageImVid',compact('videos','alarmes'));
+    }
+}

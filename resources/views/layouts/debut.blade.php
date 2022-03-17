@@ -218,7 +218,7 @@ s0.parentNode.insertBefore(s1,s0);
 
                                 <div class="col-md-6 mb-3 ">
 
-                                    
+
                                       <!--<label for="exampleColorInput" class="form-label">Color picker</label>
 <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">-->
 
@@ -384,12 +384,12 @@ s0.parentNode.insertBefore(s1,s0);
  <ul style="padding-left: 0px; " >
                        <li> <a class="navbar-brand " href="{{route('welcome')}}" style="margin-bottom:0px;">
 
-                        <img class="log img-fluid"  src="{{asset('images/logosignature.png')}}" alt="" /> 
+                        <img class="log img-fluid"  src="{{asset('images/logosignature.png')}}" alt="" />
                       </a>  </li>
                     </ul>
                       </div>
-                    
-                
+
+
   <!--<img src="images/senvigile.png" style="width:200px;" alt="" />            </a>-->
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -431,7 +431,7 @@ s0.parentNode.insertBefore(s1,s0);
                                     <a class="nav-link" href="{{ route('panier.list') }}">
                                         <i class="fas fa-cart-arrow-down fa-1.5x"></i>
                                         <div class="badge badge-warning ">
-                                            
+
                                                 0
                                         </div>
                                     </a>
@@ -520,7 +520,7 @@ s0.parentNode.insertBefore(s1,s0);
 
             </div>
             </div>
-            
+
         </div>
     </nav>
     <script src="https://kit.fontawesome.com/680a3b6773.js" crossorigin="anonymous"></script>
@@ -586,7 +586,7 @@ s0.parentNode.insertBefore(s1,s0);
                     <ul class="footer-links">
                         <li><a href="{{route('welcome') }}">Accueil</a></li>
                         <li><a  href="{{ route('Solutions')}}">Solutions </a></li>
-                      <li><a href="{{ route('Services') }}">Produits et Services</a></li> 
+                      <li><a href="{{ route('Services') }}">Produits et Services</a></li>
 
                         <!--<li><a href="#">Blog</a></li>-->
                         <li><a href="{{ route('price') }}">Offres</a></li>
@@ -603,7 +603,7 @@ s0.parentNode.insertBefore(s1,s0);
                     <div class="widget-title">
                         <h3>Données Personnelles</h3>
                     </div>
-                    <p> 
+                    <p>
 Conformément aux règles de CDP en matière de protection des données, SenVigile s’applique à ce que vos données personnelles ne puissent être traitées que dans certaines situations et sous certaines conditions.
 Un consentement de votre part sera toujours nécessaire et vous serez informé lorsque vos données personnelles sont recueillies. Vous pourrez à tout moment nous contacter afin de relever un manquement à ces obligations. SenVigile mettra tout en œuvre pour corriger le problème le cas échéant.
 </p>
@@ -799,5 +799,5 @@ Un consentement de votre part sera toujours nécessaire et vous serez informé l
 
 <script src="{{ asset('js/goods11.js') }}"></script>
 <script src="{{ asset('js/comparerMotspass.js') }}"></script>
-
+@stack('scripts')
 </html>
