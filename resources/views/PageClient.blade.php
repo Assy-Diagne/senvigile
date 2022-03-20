@@ -21,10 +21,10 @@
                         <h3> C’est pour vous!</h3>
                         <h4> Professionnels : PME-PMI, commerces :</h4>
                         <p>
-Agences de banque, agences de voyage, cash-points, boutiques multiservices
-Showrooms, épiceries, superettes, magasins grossistes, entrepôts
-Boulangeries, cafés, bars, restos, Pharmacies, cabinets médicaux, 
-Salons de coiffure, de couture, galeries</p>
+                        Agences de banque, agences de voyage, cash-points, boutiques multiservices
+                        Showrooms, épiceries, superettes, magasins grossistes, entrepôts
+                        Boulangeries, cafés, bars, restos, Pharmacies, cabinets médicaux, 
+                        Salons de coiffure, de couture, galeries</p>
 
 </p>
                         <h4> Particuliers : habitations</h4>

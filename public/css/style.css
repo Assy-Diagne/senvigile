@@ -1669,6 +1669,8 @@ padding: 15px 15px 80px ;
     z-index: 1;
 }
 
+
+
 .icon-wrapper i {
     width: 75px;
     height: 75px;
@@ -1951,6 +1953,7 @@ hr.invis1 {
     position: relative;
     background: url("uploads/code.jpg") no-repeat;
 }
+
 
 .design-wrapper {
     overflow: hidden;

@@ -256,7 +256,7 @@ Route::get('/offres/pagezenintegral', [App\Http\Controllers\PagezenintegralContr
 
 
 
-Route::get('/Mesoffres', [App\Http\Controllers\OffressController::class, 'offress'])->name('offress');
+Route::get('/Mesoffres', [App\Http\Controllers\OffressController::class, 'offress'])->name('offress')->middleware(['auth', 'verified']);
 
 
 Route::get('/features2', [App\Http\Controllers\SolutionsController::class, 'features2'])->name('Solutionss');

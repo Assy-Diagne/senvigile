@@ -145,10 +145,12 @@ Surcoût Installation 2e kit
                              <th class="hidden text-left md:table-cell">Choix du kit Zen</th>
                              <th class="hidden text-left md:table-cell">Abonnement</th>
 
-                                 <th class="hidden col-lg-2 text-left md:table-cell">Surcoût abonnement 2e kit </th>
+                                 <th class="hidden text-left md:table-cell">Sur ab 2e kit </th>
 
-                               <th class="hidden text-left md:table-cell">Forfait Installation  </th>
-                              <th class="col-lg-1 hidden text-left md:table-cell"> Surcoût Installation 2e kit </th>
+                               <th class="hidden text-left md:table-cell">Forfait Inst  </th>
+                              <th class="col-lg-1 hidden text-left md:table-cell"> Sur Inst 2e kit </th>
+                                                            <th class=" hidden text-left md:table-cell"> Totale </th>
+
                               <th class="col-lg-1 hidden text-left md:table-cell"> Retirer </th>
 
                             </tr>

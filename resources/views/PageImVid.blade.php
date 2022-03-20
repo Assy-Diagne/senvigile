@@ -26,13 +26,32 @@
             </div><!-- end title -->
 
 
+<!--<div  class="col-md-8 col-lg-8 mt-2 mb-5">
+        <div class="post-media wow fadeIn mt-4">
+                             <img src="{{asset('images/zenprod.png')}}" alt="" class="img-fluid"  style="color:white;max-width: 75%;float: center;">
+                    </div>--> <!-- end media -->
+                <!--</div>-->
+    
 
 
 
 
+                <div class="row mt-5 ">
+                    <div  class="col-md-6 col-lg-6 ">
+        <div class="post-media wow fadeIn ">
+                             <img src="{{asset('images/zenprod.png')}}" alt="" class="img-fluid"  style="color:white;max-width: 100%;">
+                    </div><!-- end media -->
 
+                    
 
-            <table class="table table-bordered table-hover" style="text-align: center;height: 100px;">
+                   <!--  <div class="pricingTable-sign-up mt-md-4 mt-lg-4 ">
+                        <a href="#" class="hover-btn-new "><span>Voir details</span></a>
+                    </div>--><!-- BUTTON BOX-->
+                </div>
+            
+                <div class="col-md-6 col-lg-6 ">
+
+            <table class="table  table-hover " style="text-align: left;height: 600px;">
                 <thead style="background: black;
     font-size: 1.2em;
     color: #fff;
@@ -44,11 +63,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <form  action="{{route('panier2')}}" id="panier2" method="POST" enctype="multipart/form-data">
+                <form  action="#" id="panier2" method="POST" enctype="multipart/form-data">
                     {{ csrf_field()}}
                     <tr>
 
-                        <th scope="row" class="col-md-6 col-lg-6" style="background-color: orange;">Quantité</th>
+                        <th scope="row" class="col-md-12 col-lg-12 " >Quantité</th>
 
                         <td colspan="3">
 
@@ -59,7 +78,7 @@
 
 
 
-                            <input type="number" name="quantity" placeholder="Quantité ?" class="form-control mr-2 col-md-12 aligncenter" value=" quantity" required min="1" style="    border: 2px solid orange;     border-radius: 1rem;">
+                            <input type="number" name="quantity" placeholder="Quantité ?" class="form-control mr-2 col-md-12 " value=" quantity" required min="1" style="    border: 2px solid orange;     border-radius: 1rem;">
 
 
 
@@ -74,19 +93,34 @@
                         </td>
 
                     </tr>
-                    <tr>
+                    <tr >
 
-                        <th scope="row" class="col-md-6 col-lg-6" style="background-color: orange;">Choix du kit Zen</th>
+                        <th scope="row" class="col-md-12 col-lg-12 " >Choix du kit Zen</th>
 
-                        <td colspan="3" class="col-sm-6">
+                        <td colspan="3" class="col-sm-12 col-lg-12 ">
+
+                                          <div class="form-check  form-check-inline">
+                                                <input class="form-check-input" type="checkbox"  value="video" id="video">
+                                                <label class="form-check-label" for="video" style="color: orange;font-weight: bold;">
+                                                    video
+                                                </label>
+                                               </div>
 
 
+                                          <div class="form-check  form-check-inline">
 
-                            <select id="selection" name="selection" class="form-control" style="    border: 2px solid orange;     border-radius: 1rem;">
+                                                <input class="form-check-input" type="checkbox" value="alarme" id="alarme">
+                                                <label class="form-check-label" for="alarme" style="color: orange;font-weight: bold;">
+                                               alarme
+                                                </label>
+                                        </div>
+                            </div>
+
+                            <!--<select id="selection" name="selection" class="form-control " style="    border: 2px solid orange;     border-radius: 1rem;">
                                 <option value="">Choisir un element</option>
                                 <option value="video" name="video" id="video" {{ request()->input('selection') == "video" ? 'selected' : '' }}  >Kit video </option>
                                 <option value="alarme" name="alarme" id="alarme"  {{ request()->input('selection') == "alarme" ? 'selected' : '' }} >Kit Alarme </option>
-                            </select>
+                            </select> -->
 
 
 
@@ -101,7 +135,11 @@
                     </tr>
                     <tr>
 
-                        <th scope="row" class="col-md-6 col-lg-6" style="background-color: orange;">Abonnement</th>
+                        <th scope="row" class="col-md-12 col-lg-12 " >Abonnement </th>
+
+
+
+
 
                         <td colspan="3" class="col-sm-6">
 
@@ -112,12 +150,15 @@
                                 <option value="Abonnement Mensuel" name="mois" selected="selected" >Annuel 59000</option>
 
                             </select>
-
-                            <button class="px-4 py-2 text-orange rounded btn btn-warning my-5" style="background-color:black;color: orange;">+Ajouter au panier</button>
-
+  </td>
 
 
-
+                    </tr>
+<tr>
+<th scope="row" class="col-md-12 col-lg-12 " > <button class="px-4 py-2 text-orange  btn btn-warning my-5 " style="background-color:black;color: orange;border-radius: 2rem ;border: 2px solid orange;">Valider le panier</button></th>
+                          <td>
+                            <!-- end media<button class="px-4 py-2 text-orange rounded btn btn-warning my-5" style="background-color:black;color: orange;border-radius: 2rem;">+Ajouter au panier</button>-->
+                          <a href="{{route('panier2')}}" class="px-4 py-2 text-orange  btn btn-warning my-5" style="background-color:black;color: orange;border-radius: 2rem ;border: 2px solid orange;">Acceder au panier</button> 
 
 
 
@@ -136,11 +177,12 @@
 
                 </tbody>
 
-            </table>
+            </table> </div> </div>
 
             <hr class="invis">
+                                        <form method="POST" action="">
 
-            <div class="row mb-5" id="boxvideos">
+            <div class="row mb-5 " id="boxvideos" >
 
                 @foreach($videos as $video)
                     <div class="col-md-6 col-sm-6 col-12 mt-2  col-lg-6 " >
@@ -150,9 +192,9 @@
                                 <div class="col-md-6 col-lg-6 col-xs-6   ">
 
                                     <img src="images/{{ $video->image }}" alt="" class="img-fluid img-rounded" >
-                                    <div class="col mt-5  " style="text-align: center;">
+                                    <div class="col mb-5  " style="text-align: center;padding-bottom: 10px;">
 
-                                        <h3>{{ $video->prix }} FCFA</h3>
+                                        <h3 >{{ $video->prix }} FCFA</h3>
                                     </div><!-- end col -->
                                 </div><!-- end col -->
 
@@ -177,18 +219,16 @@
                                         {{ $video->option8 }} <br>
 
                                     </p>
-                                    <div class="mt-3" >
+                                    <div class="mb-1" >
 
 
-                                        <form>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="Radio" value="" id="flexCheckChecked" checked>
-                                                <label class="form-check-label" for="flexCheckChecked" style="color: orange;font-weight: bold;">
+                                                <input class="form-check-input" type="Radio" name="nom" value="{{ $video->nom }}" id="{{ $video->nom }}">
+                                                <label class="form-check-label" for="{{ $video->nom }}" style="color: orange;font-weight: bold;">
                                                     Ajouter au panier
                                                 </label>
                                             </div>
-                                        </form>
                                     </div>               <!--<div class="col-md-12 col-sm-12 col-xs-6 " style="text-align:right;" >
 
 <i class="fa fa-plus-circle" style="color: orange;background: white;font-size: 20px;"></i>ajouter au panier
@@ -205,6 +245,7 @@
                 @endforeach
 
             </div><!-- end col -->
+                                        </form>
 
 
             <div class="row mb-5" id="boxalarms">
@@ -250,7 +291,7 @@
                                         <form>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="Radio" value="" id="flexCheckChecked" checked>
+                                                <input class="form-check-input" type="Radio" value="" id="flexCheckChecked" >
                                                 <label class="form-check-label" for="flexCheckChecked" style="color: orange;font-weight: bold;">
                                                     Ajouter au panier
                                                 </label>
@@ -297,7 +338,26 @@
 @stop
 @push('scripts')
     <script>
-        $(function () {
+
+$(function () {
+        document.getElementById("boxvideos").style.display = "none";
+        document.getElementById("boxalarms").style.display = "none";
+        
+    $('#video').change(function() {
+        $('#boxvideos').toggle();
+    });
+
+
+    $('#alarme').change(function() {
+        $('#boxalarms').toggle();
+    });
+    
+});
+
+
+
+
+      /*  $(function () {
                 document.getElementById("boxvideos").style.display = "none";
                 document.getElementById("boxalarms").style.display = "none";
             $('#selection').change(function () {
@@ -319,6 +379,9 @@
                     document.getElementById("boxalarms").style.display = "none";
                 }
             });
-        });
+        }); */
     </script>
+
+
+    
 @endpush
