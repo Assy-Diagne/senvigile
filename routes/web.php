@@ -49,6 +49,7 @@ use App\Http\Controllers\PaniertwooController;
 
 use App\Http\Controllers\PageimvidController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\AlarmController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -272,6 +273,7 @@ Route::post('panier/add', [PaniertwooController::class, 'addToPanier'])->name('p
 Route::get('/produits', [App\Http\Controllers\VideoController::class ,'affichage']);
 
 Route::post('/produits', [App\Http\Controllers\VideoController::class ,'enregistrement'])->middleware(['auth', 'verified']);
+Route::post('/produits', [App\Http\Controllers\AlarmController::class ,'enregistrementA'])->middleware(['auth', 'verified']);
 
 
 

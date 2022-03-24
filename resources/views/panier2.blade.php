@@ -95,6 +95,10 @@
                                 </td>
                                  <!-- </td>-->
 
+                                   <td>
+  <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['surcoutab']}} </a></strong>
+                                </td>
+
                                   <td>
 
                                 <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->name }}</a></strong>
@@ -145,8 +149,7 @@
                                 </td>
                                 <td>
                                 <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['surc']}} </a></strong>
-                                </td>
-
+                              
   
 
                                 

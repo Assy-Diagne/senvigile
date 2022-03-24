@@ -72,8 +72,8 @@ $selectionprix = $selection[0];
 
 
             'selection'=> $selectionprix,
-                                                  'formule'=> $alarme->formule,
-                                                                'surc'=>   $request->surcoutinst1,
+            'formule'=> $alarme->formule,
+             'surc'=>   $request->surcoutinst1,
 
 
             'typeabonnement'=> $selectiotype) )->associate('App\Models\Alarm');
