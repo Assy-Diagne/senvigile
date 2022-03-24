@@ -70,11 +70,11 @@ $selectionprix = $selection[0];
              $alarme->prix,
             array(
 'image'=>$video->image,
-             'formule'=> $ $alarme->formule,
+             'formule'=> $alarme->formule,
                          'typeabonnement'=> $selectiotype,
 
 
-                        'surcoutab'=>$ $alarme->surcoutab,
+                        'surcoutab'=> $alarme->surcoutab,
                                       'surc'=>   $request->surcoutinst1,
 
 
