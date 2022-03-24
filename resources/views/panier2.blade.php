@@ -57,18 +57,19 @@
                           <thead  class=" my-auto" style="background-color: orange;">
                             <tr>
                               <th class="text-left">Image</th>
+                            <th class="hidden text-left md:table-cell"> Formule</th>
                               <th class="hidden text-left md:table-cell"> Nom</th>
+
                               <th class="hidden text-left md:table-cell"> Quantité</th>
 
 
                               <th class="hidden text-left md:table-cell">P.U</th>
-                              <th class="hidden text-left md:table-cell"></th>
 
                              <th class="hidden text-left md:table-cell">Abonnement</th>
 
                                  <th class="hidden text-left md:table-cell">Sur Ab.  </th>
 
-                               <th class="hidden text-left md:table-cell">Forfait Inst.  </th>
+                               <th class="hidden text-left md:table-cell">Inst.  </th>
                               <th class="col-lg-1 hidden text-left md:table-cell"> Sur Inst.</th>
                                                             <th class=" hidden text-left md:table-cell"> Totale </th>
 
@@ -88,27 +89,19 @@
                               @foreach (Cart::content() as $content)
                             <tr>
                                  <!-- <td class="hidden pb-4 md:table-cell">-->
-
-                                  <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->nom }}</a></strong>
-                                <td>
+  <td>
                                       <img   src="{{ asset('images/'.$content->options['image'])}}" alt="thumbnail" width="50" class="rounded-circle img-rounded">
                                 </td>
-                                 <!-- </td>-->
 
-                                   <td>
-  <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['surcoutab']}} </a></strong>
+                                 <td>
+                                <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['formule']}} </a></strong>
                                 </td>
 
+
                                   <td>
-
-                                <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->name }}</a></strong>
+                                  <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->name }}</a></strong>
                               </td>
-                              
-
-
-                             
-
-
+                                 <!-- </td>-->
 <td>
               <!-- Le formulaire de mise à jour de la quantité -->
               <form method="POST" action="{{ route('panier.update', $content->rowId) }}" class="form-inline d-inline-block" >
@@ -121,8 +114,8 @@
               </form>
             </td>
 
-                         
-                              <td>
+
+             <td>
 
 
 
@@ -130,23 +123,40 @@
 
             </td>
 
- 
 
-
-
-                               <td>
-
-                               
-                              </td>
-
-  <td>
+             <td>
                                 <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['selection']}} </a></strong>
                                 </td>
                     
 
-                                <td>
-                                <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['formule']}} </a></strong>
+
+
+
+
+
+                                   <td>
+  <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['surcoutab']}} </a></strong>
                                 </td>
+
+                                 
+                              
+
+
+                             
+
+
+
+
+                         
+                             
+ 
+
+
+
+                              
+ 
+
+                               
                                 <td>
                                 <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['surc']}} </a></strong>
                               
@@ -159,16 +169,6 @@
                                
                               </td>
 
-
-
-
-                                 <td>
-                                
-                                </td>
-
-
-                                 <td>
-                                </td>
 
 
 

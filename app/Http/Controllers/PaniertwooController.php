@@ -43,13 +43,16 @@ $selectionprix = $selection[0];
              $video->prix,
             array(
             'image'=>$video->image,
+             'formule'=> $video->formule,
+                         'typeabonnement'=> $selectiotype,
+
+
                         'surcoutab'=>$video->surcoutab,
+                                      'surc'=>   $request->surcoutinst1,
 
-            'selection'=> $selectionprix,
-                        'formule'=> $video->formule,
-              'surc'=>   $request->surcoutinst1,
 
-            'typeabonnement'=> $selectiotype
+            'selection'=> $selectionprix
+
 
           ) )->associate('App\Models\Video');
                  }
@@ -66,17 +69,16 @@ $selectionprix = $selection[0];
              $request->quantity,
              $alarme->prix,
             array(
-
-           'image'=> $alarme->image,
-            'surcoutab'=> $alarme->surcoutab,
-
-
-            'selection'=> $selectionprix,
-            'formule'=> $alarme->formule,
-             'surc'=>   $request->surcoutinst1,
+'image'=>$video->image,
+             'formule'=> $ $alarme->formule,
+                         'typeabonnement'=> $selectiotype,
 
 
-            'typeabonnement'=> $selectiotype) )->associate('App\Models\Alarm');
+                        'surcoutab'=>$ $alarme->surcoutab,
+                                      'surc'=>   $request->surcoutinst1,
+
+
+            'selection'=> $selectionprix) )->associate('App\Models\Alarm');
                    }
 
 
