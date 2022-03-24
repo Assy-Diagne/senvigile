@@ -448,16 +448,17 @@ s0.parentNode.insertBefore(s1,s0);
                                
 
 <li class="nav-item mr-2">
-                                    <a class="nav-link" href="{{ route('panier.list') }}">
-                                        <i class="fas fa-cart-arrow-down fa-1.5x"></i>
-                                        <div class="badge badge-warning ">
-                                           <!-- @auth
-                                            @else-->
-                                                0
-                                           <!-- @endauth-->
-                                        </div>
-                                    </a>
-                                </li>
+                            <a class="nav-link" href="{{ route('panier.list') }}">
+                                <i class="fas fa-cart-arrow-down fa-1.5x"></i>
+                                    <div class="badge badge-warning ">
+                                        @auth
+                                        {{Cart::count()}}
+                                        @else
+                                        0
+                                        @endauth
+                                    </div>
+                            </a>
+                        </li>
 
                         <li class="nav-item dropdown text-white">
 

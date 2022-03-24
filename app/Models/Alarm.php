@@ -12,7 +12,14 @@ class Alarm extends Model
       protected $fillable = [
 'nom',
 'image',
+'formule',
 'prix',
+'abonnementmensuel',
+'abonnementannuel',
+'surcoutab',
+'forfaitinstallation',
+'surcoutinst1',
+'surcoutinst2',
 'option1',
 'option2',
 'option3', 
@@ -21,7 +28,6 @@ class Alarm extends Model
 'option6', 
 'option7',
 'option8'
-
           
     ];
 }

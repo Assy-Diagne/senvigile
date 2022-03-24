@@ -82,4 +82,55 @@ class VideoController extends Controller
     {
         //
     }
+
+
+
+     public function affichage()
+    {
+        return view('produits');
+
+    }
+
+     public function enregistrement(Request $request)
+    {
+
+        $video= new Video();
+         
+
+        $video->nom= $request->name;
+
+        // $prod->description= $request->description;
+
+        $video->image= $request->image;
+        $video->abonnementmensuel= $request->abonnementmensuel;   
+
+        $video->abonnementannuel= $request->abonnementannuel;
+        $video->surcoutinst1= $request->surcoutinst1;   
+
+       $video->prix= $request->prix;
+
+        $video->option1= $request->option1;
+
+        $video->option2= $request->option2;
+
+        $video->option3= $request->option3;
+
+        $video->option4= $request->option4;
+        $video->option5= $request->option5;
+        $video->option6= $request->option6;
+
+        $video->option7= $request->option7;
+                $video->option8 = $request->option8;
+
+           $prod->save();
+
+            return view('PageImVid');
+        
+
+    }  
+
+
+
+
+
 }

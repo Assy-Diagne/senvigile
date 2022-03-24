@@ -48,6 +48,7 @@ use App\Http\Controllers\PagezenintegralController;
 use App\Http\Controllers\PaniertwooController;
 
 use App\Http\Controllers\PageimvidController;
+use App\Http\Controllers\VideoController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -196,16 +197,14 @@ Route::get('/statiques', [App\Http\Controllers\StatiquesController::class, 'stat
 //Route::get('/produit', 'ProduitController')->name('produits.show');
 
 //Route::resource('/produit', App\Http\Controllers\ProduitController::class);
-Route::get('/produits', [App\Http\Controllers\ProduitController::class ,'affichage']);
-Route::post('/produits', [App\Http\Controllers\ProduitController::class ,'enregistrement']);
+
 /*Route::get('/mesproduits', [App\Http\Controllers\ProduitController::class ,'index']);
 Route::get('/mesproduits/{id}', [App\Http\Controllers\ProduitController::class ,'showprod']);*/
 
 
 
 //Route::resource('/panier', App\Http\Controllers\CartController::class);
-Route::get('panier', [CartController::class, 'panierList'])->name('panier.list')->middleware(['auth', 'verified']);
-Route::post('panier/add/{id}', [CartController::class, 'addToPanier'])->name('panier.store')->middleware(['auth', 'verified']);
+
 Route::post('update-panier/{id}', [CartController::class, 'updatePanier'])->name('panier.update')->middleware(['auth', 'verified']);
 
 
@@ -217,7 +216,6 @@ Route::get('/PageClient', [App\Http\Controllers\PClientController::class, 'Pclie
 
 
 
-Route::post('/produits', [App\Http\Controllers\ProduitController::class ,'enregistrement'])->middleware(['auth', 'verified']);
 
 Route::post('remove/{id}', [CartController::class, 'removePanier'])->name('panier.remove')->middleware(['auth', 'verified']);
 //Route::delete('supprimer', [CartController::class, 'supprimer'])->name('panier.suppression');
@@ -265,10 +263,15 @@ Route::get('/ProduitsServices', [App\Http\Controllers\ProduitssetservicessContro
 
 
 Route::get('/ImagesetVideos', [App\Http\Controllers\PageimvidController::class, 'imvid'])->name('imvid');
+
 Route::get('/Pagepanier', [PaniertwooController::class, 'panier2'])->name('panier2');
 
+Route::get('panier', [PaniertwooController::class, 'panierList'])->name('panier.list')->middleware(['auth', 'verified']);
+Route::post('panier/add', [PaniertwooController::class, 'addToPanier'])->name('panier.store')->middleware(['auth', 'verified']);
 
+Route::get('/produits', [App\Http\Controllers\VideoController::class ,'affichage']);
 
+Route::post('/produits', [App\Http\Controllers\VideoController::class ,'enregistrement'])->middleware(['auth', 'verified']);
 
 
 

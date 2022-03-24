@@ -25,86 +25,6 @@
 
 
 
-<table class="table table-bordered table-hover" style="text-align: center;">
-  <thead style="background: orange;">     
-    <tr style="font-size: 1.2em; color: black;" >
-    <th style="border-top-left-radius: 20px; ">
-
-Nom
-      </th>
-      <th>
-     Quantité
-
-      </th>
-      <th>
-      Choix du kit Zen
-
-      </th>
-      <th>
-      Abonnement
-
-      </th>
-      <th>
-      
-Surcoût abonnement 2e kit 
-      </th>
-      <th>
-      Forfait Installation 
-
-      </th>
-      <th style="border-top-right-radius: 20px; ">
-      
-Surcoût Installation 2e kit 
-      </th>
-      
-    </tr>
-  </thead>
-  <tbody>
-   
-<tr style="font-size: 1.2em;
-    color: black;
-        border-top-left-radius: 10px;
-    border-top-left-radius: 10px;" >
-    <td>
-
-Quantité
-      </td>
-       <td>
-      Choix du kit Zen
-
-      </td>
-       <td>
-      Abonnement
-
-      </td>
-      <td>
-      
-Surcoût abonnement 2e kit 
-     </td>
-       <td>
-      Forfait Installation 
-
-     </td>
-       <td>
-      
-Surcoût Installation 2e kit 
-      </td> <td>
-      
-
-    
-
-      </td>
-    </tr>
-
-  </tbody>
-
-</table>
-</div>
-</div>
-</div>
-</div>
-
-
 
 
 
@@ -114,7 +34,6 @@ Surcoût Installation 2e kit
 
 
 
-             <span class="bordures p-3" style='border-left: 1px solid grey;'>
 
             <div class="container  mx-auto">
 
@@ -135,20 +54,22 @@ Surcoût Installation 2e kit
                     <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
                       <div class="flex-1 p-0 ">
                         <table class="table table-hover bg-white mb-0">
-                          <thead  class="thead-dark my-auto">
+                          <thead  class=" my-auto" style="background-color: orange;">
                             <tr>
                               <th class="text-left">Image</th>
                               <th class="hidden text-left md:table-cell"> Nom</th>
+                              <th class="hidden text-left md:table-cell"> Quantité</th>
 
-                              <th class="hidden text-left md:table-cell">Quantité</th>
 
-                             <th class="hidden text-left md:table-cell">Choix du kit Zen</th>
+                              <th class="hidden text-left md:table-cell">P.U</th>
+                              <th class="hidden text-left md:table-cell"></th>
+
                              <th class="hidden text-left md:table-cell">Abonnement</th>
 
-                                 <th class="hidden text-left md:table-cell">Sur ab 2e kit </th>
+                                 <th class="hidden text-left md:table-cell">Sur Ab.  </th>
 
-                               <th class="hidden text-left md:table-cell">Forfait Inst  </th>
-                              <th class="col-lg-1 hidden text-left md:table-cell"> Sur Inst 2e kit </th>
+                               <th class="hidden text-left md:table-cell">Forfait Inst.  </th>
+                              <th class="col-lg-1 hidden text-left md:table-cell"> Sur Inst.</th>
                                                             <th class=" hidden text-left md:table-cell"> Totale </th>
 
                               <th class="col-lg-1 hidden text-left md:table-cell"> Retirer </th>
@@ -162,13 +83,106 @@ Surcoût Installation 2e kit
 
              <tbody>
 
+                             <tbody>
+
+                              @foreach (Cart::content() as $content)
+                            <tr>
+                                 <!-- <td class="hidden pb-4 md:table-cell">-->
+
+                                  <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->nom }}</a></strong>
+                                <td>
+                                      <img   src="{{ asset('images/'.$content->options['image'])}}" alt="thumbnail" width="50" class="rounded-circle img-rounded">
+                                </td>
+                                 <!-- </td>-->
+
+                                  <td>
+
+                                <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->name }}</a></strong>
+                              </td>
+                              
+
+
+                             
+
+
+<td>
+              <!-- Le formulaire de mise à jour de la quantité -->
+              <form method="POST" action="{{ route('panier.update', $content->rowId) }}" class="form-inline d-inline-block" >
+              {{ csrf_field() }}
+              @method('POST')
+                 <!--<input type="number" name="quantity" placeholder="Quantité" value="{{Cart::content()->count()}}" class="form-control mr-2" style="width: 80px" > -->
+                  <input type="number" name="quantity" value="{{$content->qty}}" class="form-control mr-2 col-lg-4" style="width: 150px">
+
+                  <button type="submit" class="btn btn-primary" title="Rafraichir le panier"><i class="fas fa-sync"></i></button>
+              </form>
+            </td>
+
+                         
+                              <td>
+
+
+
+              <strong><a href="{{ route('panier.list',$content->id) }}" title="Afficher le produit" >{{ number_format($content->price, 0, ',', ' ') }} FCFA</a></strong>
+
+            </td>
+
+ 
+
+
+
+                               <td>
+
+                               
+                              </td>
+
+  <td>
+                                <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['selection']}} </a></strong>
+                                </td>
+                    
+
+                                <td>
+                                <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['formule']}} </a></strong>
+                                </td>
+                                <td>
+                                <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ $content->options['surc']}} </a></strong>
+                                </td>
+
+  
+
+                                
                             
+                               <td>
+
+                               
+                              </td>
 
 
 
-            
 
-                           <strong> <p> FCFA</p></strong>
+                                 <td>
+                                
+                                </td>
+
+
+                                 <td>
+                                </td>
+
+
+
+
+             
+
+
+
+
+
+
+            <td>
+
+              
+
+
+                           <strong> <p>{{$content->price * $content->qty }}</p></strong>
 
 
             </td>
@@ -177,11 +191,44 @@ Surcoût Installation 2e kit
              <td>
 
 
-              
+              <form  method="POST" action="{{ route('panier.remove', $content->rowId) }}">
+                                      @csrf
+                                         @method('POST')
+                                   <button type="submit" class="btn btn-outline-danger height-auto btn-sm"><i class="fas fa-trash"></i></button>
+              </form>
 
             </td>
 
           </tr>
+
+
+
+
+                            @endforeach
+
+
+                            <!-- <td colspan="2">
+             On affiche total général
+                        <strong> Total articles: {{ Cart::content()->count() }}</strong><br/>
+
+
+                        <strong> Total articles: {{ Cart::count() }}</strong><br/>
+
+
+                        <strong> TVA: {{ Cart::tax() }} FCFA</strong><br/>
+                                                <strong> Totale HT: {{ Cart::subtotal() }} FCFA</strong><br/>
+
+
+            <strong> Total: {{ Cart::total() }}FCFA</strong>
+
+
+
+
+          </td> -->
+
+
+                          </tbody>
+
 
 
 
@@ -192,10 +239,36 @@ Surcoût Installation 2e kit
                         </table>
 
                         
+  @if( Cart::content()->count()  > 0)
+
+                         <a class="btn btn-danger float-right mt-5 mb-2 mx-1" href="{{ url('/videpanier') }}" title="Retirer tous les produits du panier" >Vider le panier</a>
+
+                                       @else
+                         <a class="btn btn-danger float-right mt-5 mb-2 mx-1 disabled" href="#" title="Retirer tous les produits du panier"  aria-disabled="true">Vider le panier</a>
+
+                                     @endif
 
 
 
 
+
+
+                            <!--<a class="btn float-left mt-5 mb-2 mx-1" href="{{ url('/continuer') }}" title="Retirer tous les produits du panier" >payer la commande du panier</a>-->
+
+                            <form method="POST" action="{{ route('validerpanier.store') }}" class="form-inline d-inline-block" id="contactform"  >
+                             {{ csrf_field() }}
+
+
+                                    <!-- verifier si le panier est vide pour desactiver le bouton -->
+                                @if( Cart::content()->count()  > 0)
+                <input type="submit" class="btn btn-success mt-5 mb-2 mx-1" value="valider la commande"    onclick='calltouchpay()' title="Valider la commande"/>
+
+                                @else
+                                <input type="submit" class="btn btn-success mt-5 mb-2 mx-1" value="valider la commande"     disabled="disabled" title="Valider la commande"/>
+                                @endif
+
+
+              </form>
 
 
                       </div>

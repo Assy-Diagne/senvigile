@@ -17,7 +17,16 @@ class CreateVideosTable extends Migration
             $table->id();
              $table->string('nom');
              $table->string('image');
+             $table->string('formule')->nullable();
              $table->integer('prix');
+             $table->integer('abonnementmensuel')->nullable();
+            $table->integer('abonnementannuel')->nullable();
+
+             $table->integer('surcoutab')->nullable();
+             $table->integer('forfaitinstallation')->nullable();
+             $table->integer('surcoutinst1')->nullable();
+            $table->integer('surcoutinst2')->nullable();
+
              $table->string('option1')->nullable();
              $table->string('option2')->nullable();
              $table->string('option3');
@@ -26,9 +35,9 @@ class CreateVideosTable extends Migration
              $table->string('option6')->nullable();
              $table->string('option7')->nullable();
              $table->string('option8')->nullable();
+            $table->timestamps();
 
                                     
-            $table->timestamps();
         });
     }
 
