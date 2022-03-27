@@ -4,16 +4,6 @@
 @section('content')
     <!-- End header -->
 
-    <div class="all-title-box">
-        <div id="testimonials" class="parallax section db parallax-off" style="background-image:url('images/banner.jpg');">
-            <div class="container text-center text-white ">
-                <!--<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span> entre les h1 -->
-                <h1>Solutions </h1>
-                <p class="m_1 text-justify">Des solutions de lutte efficace contre l’insécurité et le vol avec des services de télésurveillance et d'interventions 24/7. </p></h1>
-            </div>
-        </div>
-    </div>
-
 
     <div id="overviews" class="section lb">
         <div class="container">
@@ -218,7 +208,7 @@
                                     <img src="images/{{ $video->image }}" alt="" class="img-fluid img-rounded" >
                                     <div class="col mb-5  " style="text-align: center;padding-bottom: 10px;">
 
-                                        <h3 >{{ $video->prix }} FCFA</h3>
+                                        <h3 >{{ number_format($video->prix, 0, ',', ' ') }} FCFA</h3>
                                     </div><!-- end col -->
                                 </div><!-- end col -->
 
@@ -228,7 +218,6 @@
 
 
 
-                                        <div class='surcoutinst1' id="surcoutinst1">{{ $video->surcoutinst1}} FCFA</div>
 
 
                                     <h3 class="text-center">{{ $video->nom }}</h3>
@@ -252,7 +241,7 @@
                                             <div class="form-check" >
                                                 <input class="form-check-input" type="radio" name="radio" id="{{ $video->id }}"  value="{{ $video->id }}"  >
                                                 <label class="form-check-label" for="{{ $video->id }}" style="color: orange;font-weight: bold;">
-                                                    Selectionner
+                                                    Sélectionner
                                                 </label>
                                                 <input type="hidden" name="$video->id " value="{{$video->id}}">
 
@@ -312,7 +301,7 @@
                                     <img src="images/img9.jpg" alt="" class="img-fluid img-rounded" >
                                     <div class="col mt-5  " style="text-align: center;">
 
-                                        <h3>{{ $alarme->prix }} FCFA</h3>
+                                        <h3>{{ number_format($alarme->prix , 0, ',', ' ')}} FCFA</h3>
                                     </div><!-- end col -->
                                 </div><!-- end col -->
 
@@ -343,7 +332,7 @@
 
 
                                             <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio2" id="{{ $alarme->id }}"  value="{{ $alarme->id }}">
+                          <input class="form-check-input" type="radio" name="radio2" id="{{ $alarme->id }}"  value="{{ $alarme->id }}" checked="checked">
                                                 <label class="form-check-label" for="flexCheckChecked"  id="{{ $alarme->id }}" style="color: orange;font-weight: bold;">
                                                      Selectionner
                                                 </label>
@@ -394,7 +383,6 @@
 $(function () {
         document.getElementById("boxvideos").style.display = "none";
         document.getElementById("boxalarms").style.display = "none";
-                document.getElementById("surcoutinst1").style.display = "none";
 
     $('#video').change(function() {
         $('#boxvideos').toggle();
@@ -404,8 +392,11 @@ $(function () {
     $('#alarme').change(function() {
         $('#boxalarms').toggle();
     });
-    
+
+
+
 });
+     
 
 
 

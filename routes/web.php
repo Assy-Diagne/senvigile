@@ -206,10 +206,10 @@ Route::get('/mesproduits/{id}', [App\Http\Controllers\ProduitController::class ,
 
 //Route::resource('/panier', App\Http\Controllers\CartController::class);
 
-Route::post('update-panier/{id}', [CartController::class, 'updatePanier'])->name('panier.update')->middleware(['auth', 'verified']);
+Route::post('update-panier/{id}', [PaniertwooController::class, 'updatePanier'])->name('panier.update')->middleware(['auth', 'verified']);
 
 
-Route::post('enregistrer', [CartController::class, 'validerpanier'])->name('validerpanier.store')->middleware(['auth', 'verified']);
+Route::post('enregistrer', [PaniertwooController::class, 'validerpanier'])->name('validerpanier.store')->middleware(['auth', 'verified']);
 
 Route::get('/PageClient', [App\Http\Controllers\PClientController::class, 'Pclient1'])->name('pclient')->middleware(['auth', 'verified']);
 
@@ -218,7 +218,7 @@ Route::get('/PageClient', [App\Http\Controllers\PClientController::class, 'Pclie
 
 
 
-Route::post('remove/{id}', [CartController::class, 'removePanier'])->name('panier.remove')->middleware(['auth', 'verified']);
+Route::post('remove/{id}', [PaniertwooController::class, 'removePanier'])->name('panier.remove')->middleware(['auth', 'verified']);
 //Route::delete('supprimer', [CartController::class, 'supprimer'])->name('panier.suppression');
 
 //Route::post('clear', [CartController::class, 'clearAllPanier'])->name('panier.clear');

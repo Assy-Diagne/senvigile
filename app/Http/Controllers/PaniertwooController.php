@@ -25,10 +25,91 @@ class PaniertwooController extends Controller
     {
 
       $video = Video::find($request->radio);
+        $alarme = Alarm::find($request->radio2);
+
+
+       if( ($request->has('radio')) && ($request->has('radio2') ) ){
+
+
+        $surcoutab =  1500;
+               $video->surcoutab =  $surcoutab - $surcoutab;
+
+
+
+                $alarme->surcoutab =  $surcoutab;
+                $alarme->save();
+       $video->save();
+
+
+
+       }
+       elseif($request->has('radio2')) {
+        $surcoutab =  1500;
+ 
+                  $alarme->surcoutab =  $surcoutab - $surcoutab;
+
+
+
+        $alarme->save();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+if( ($request->has('radio')) && ($request->has('radio2') ) ){
+
+
+        $surcoutinst1 =  5000;
+               $video->surcoutinst1 =  $surcoutinst1 - $surcoutinst1  ;
+
+
+
+                $alarme->surcoutinst1 =  $surcoutinst1 + 2500;
+                $alarme->save();
+       $video->save();
+
+
+
+       }
+       elseif($request->has('radio2')) {
+        $surcoutinst1 =  5000;
+ 
+                  $alarme->surcoutinst1 =  $surcoutinst1 ;
+
+
+
+        $alarme->save();
+
+
+}
+
+
+else {
+        $surcoutinst1 =  5000;
+ 
+                  $video->surcoutinst1 =  $surcoutinst1 ;
+
+
+
+        $video->save();
+
+
+}
+
+
+
+
+
+
        
-
-
-
                  $selection = explode("-", $request->selection);
 
 $selectionprix = $selection[0];
@@ -38,7 +119,7 @@ $selectionprix = $selection[0];
 
         Cart::add(
            $video->id,
-           $video->nom,
+           $video->option8,
              $request->quantity,
              $video->prix,
             array(
@@ -48,7 +129,7 @@ $selectionprix = $selection[0];
 
 
                         'surcoutab'=>$video->surcoutab,
-                                      'surc'=>   $request->surcoutinst1,
+                                      'surc'=>   $video->surcoutinst1,
 
 
             'selection'=> $selectionprix
@@ -69,13 +150,13 @@ $selectionprix = $selection[0];
              $request->quantity,
              $alarme->prix,
             array(
-'image'=>$video->image,
+'image'=>$alarme->image,
              'formule'=> $alarme->formule,
                          'typeabonnement'=> $selectiotype,
 
 
                         'surcoutab'=> $alarme->surcoutab,
-                                      'surc'=>   $request->surcoutinst1,
+                                      'surc'=>    $alarme->surcoutinst1,
 
 
             'selection'=> $selectionprix) )->associate('App\Models\Alarm');
@@ -98,13 +179,41 @@ $selectionprix = $selection[0];
       $video = Video::find($request->radio);
 
         $content = Cart::Content();
-        return view('panier2', compact('content'));
+        $somme = 0;
+
+        foreach ( $content as $prod) {
+            $somme +=  ($prod->options['surcoutab'] +$prod->options['surc']+$prod->price+$prod->options['selection']) * $prod->qty;
+
+        }
+
+        return view('panier2', compact('content','somme'));
         
+
+    }
+
+     public function updatePanier(Request $request, $id)
+
+    {
+
+        $content = Cart::update($request->id, $request->quantity);
+
+        return redirect()->back();
 
     }
 
 
 
+public function removePanier(Request $request, $id)
+
+    {
+        //$content=Cart::remove($request->id);
+        dd($request->all()) ;
+
+
+        //return view('panier2',compact('content'));
+
+
+    }
 
 
 }
