@@ -8,23 +8,7 @@ use Illuminate\Http\Request;
 
 class PageimvidController extends Controller
 {
-    protected function rules()
-    {
-
-
-
-            return  [
-                'radio' => 'required_with:radio2',
-                
-            ];
-        
-    
-    
-
-}
-
-
-
+   
 
 
 
