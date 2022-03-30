@@ -48,6 +48,8 @@ use App\Http\Controllers\PagezenintegralController;
 use App\Http\Controllers\PaniertwooController;
 
 use App\Http\Controllers\PageimvidController;
+use App\Http\Controllers\PageimvidpremController;
+
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\AlarmController;
 
@@ -265,7 +267,7 @@ Route::get('/ProduitsServices', [App\Http\Controllers\ProduitssetservicessContro
 
 Route::get('/ImagesetVideos', [App\Http\Controllers\PageimvidController::class, 'imvid'])->name('imvid');
 
-Route::get('/Pagepanier', [PaniertwooController::class, 'panier2'])->name('panier2');
+Route::get('/Pagepanier', [PaniertwooController::class, 'panier2'])->name('panier2')->middleware(['auth', 'verified']);
 
 Route::get('panier', [PaniertwooController::class, 'panierList'])->name('panier.list')->middleware(['auth', 'verified']);
 Route::post('panier/add', [PaniertwooController::class, 'addToPanier'])->name('panier.store')->middleware(['auth', 'verified']);
@@ -275,6 +277,7 @@ Route::get('/produits', [App\Http\Controllers\VideoController::class ,'affichage
 Route::post('/produits', [App\Http\Controllers\VideoController::class ,'enregistrement'])->middleware(['auth', 'verified']);
 Route::post('/produits', [App\Http\Controllers\AlarmController::class ,'enregistrementA'])->middleware(['auth', 'verified']);
 
+Route::get('/ImagesetVideospremium', [App\Http\Controllers\PageimvidpremController::class, 'imvid'])->name('imvidprem');
 
 
 

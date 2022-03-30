@@ -12,23 +12,96 @@ use Cart;
 
 class PaniertwooController extends Controller
 {
-     public function panier2()
-    {
-
-        return view('panier2');
-    } 
+    
 
 
 
+ 
     public function addToPanier(Request $request)
 
     {
 
-      $video = Video::find($request->radio);
+
+
+      
+
+
+
+
+
+
+         if( ($request->has('videochoix')) &&  ($request->has('alarmechoix') )){
+
+
+    
+    //$validated = $request->validate([
+      //  'radio' => 'required',
+       //'radio2' => 'required',
+    //]);
+
+
+
+    $this->validate(
+    $request, 
+    [
+        'radio' => 'required',
+        'radio2' => 'required',
+    ],
+    [
+    'radio.required' => 'Vous devez selectionner une video  au moins',
+    'radio2.required' => 'Vous devez selectionner une alarme au moins',
+    ]
+);
+    // The blog post is valid...
+}
+
+
+
+
+
+
+
+
+
+
+ if( (!$request->has('videochoix')) &&  (!$request->has('alarmechoix') )){
+
+
+    
+    //$validated = $request->validate([
+      //  'radio' => 'required',
+       //'radio2' => 'required',
+    //]);
+
+
+
+    $this->validate(
+    $request, 
+    [
+        'radio' => 'required',
+        'radio2' => 'required',
+    ],
+    [
+    'radio.required' => 'Vous devez selectionner une caméra  au moins',
+    'radio2.required' => 'Vous devez selectionner un kit d alarme au moins',
+    ]
+);
+    // The blog post is valid...
+}
+
+
+
+
+
+   
+ $video = Video::find($request->radio);
         $alarme = Alarm::find($request->radio2);
 
 
        if( ($request->has('radio')) && ($request->has('radio2') ) ){
+
+
+
 
 
         $surcoutab =  1500;
@@ -121,7 +194,7 @@ $selectionprix = $selection[0];
            $video->id,
            $video->option8,
              $request->quantity,
-             $video->prix,
+             $video->prix + $video->optionvideo,
             array(
             'image'=>$video->image,
              'formule'=> $video->formule,
@@ -135,9 +208,10 @@ $selectionprix = $selection[0];
             'selection'=> $selectionprix
 
 
+
+
           ) )->associate('App\Models\Video');
                  }
-
 
 
  $alarme = Alarm::find($request->radio2);
@@ -214,6 +288,9 @@ public function removePanier(Request $request, $id)
 
 
     }
+
+
+     
 
 
 }

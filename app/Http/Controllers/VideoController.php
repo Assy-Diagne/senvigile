@@ -108,6 +108,8 @@ class VideoController extends Controller
         $video->surcoutinst1= $request->surcoutinst1;   
 
        $video->prix= $request->prix;
+              $video->optionvideo= $request->optionvideo;
+
 
         $video->option1= $request->option1;
 

@@ -334,7 +334,7 @@
  <div class="pricingTable-sign-up  mt-md-3  " >
 
                    
-                        <a href="{{route('offress')}}" class="hover-btn-new" id="readmore" ><span>Commandez Maintenant</span></a>
+                        <a href="{{route('imvidprem')}}" class="hover-btn-new" id="readmore" ><span>Commandez Maintenant</span></a>
                     </div><!-- BUTTON BOX-->
                     
 

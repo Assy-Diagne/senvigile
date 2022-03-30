@@ -48,7 +48,7 @@
                     <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
                       <div class="flex-1 p-0 ">
                         <table class="table table-hover bg-white mb-0" style="box-sizing: ;">
-                          <thead  class=" my-auto" style="background-color: orange;">
+                          <thead  class=" my-auto" style="background-color: black;color:white;">
                             <tr>
                               <th class="text-left">Image</th>
                             <th class="hidden text-left md:table-cell"> Formule</th>
@@ -65,9 +65,10 @@
 
                             <th class="hidden text-left md:table-cell">Installation.  </th>
                                 <!-- <th class="col-lg-1 hidden text-left md:table-cell"> Sur Inst.</th>-->
-                                                            <th class=" hidden text-left md:table-cell"> Totale produit</th>
+                                                            <th class=" hidden text-left md:table-cell" style="background-color:orange;color: black;"> Totale produit</th>
 
-                              <th class="col-lg-1 hidden text-left md:table-cell"> Retirer </th>
+                              <th class="col-lg-1 hidden text-left md:table-cell" style="background-color:black;color:white ;"> Retirer </th>
+
 
                             </tr>
 
@@ -153,7 +154,7 @@
                                
                                 <td>
                                 <strong><a href="{{ route('panier.list', $content->id) }}" title="Afficher le produit" >{{ number_format($content->options['surc'], 0, ',', ' ')}} </a></strong>
-                              
+                                </td>
   
 
                                 
@@ -178,6 +179,10 @@
  
 
             </td>
+
+
+
+            
 
 
              <td>
@@ -222,7 +227,7 @@
 <form method="POST" action="{{ route('validerpanier.store') }}" class="" id="contactform"  >
                              {{ csrf_field() }}
 
-<th  colspan="8">
+<th  colspan="8" >
 
 
                                     <!-- verifier si le panier est vide pour desactiver le bouton -->
@@ -238,13 +243,13 @@
 
 
 
-            <td>
+            <td >
                         
 
                         
   @if( Cart::content()->count()  > 0)
  
-                         <a class="btn btn-danger float-right col-lg-offset-9  mt-5 mb-2 mx-1 " href="{{ url('/videpanier') }}" title="Retirer tous les produits du panier" >Vider le panier</a>
+                         <a class="btn btn-danger mt-5 mb-2 mx-1 " href="{{ url('/videpanier') }}" title="Retirer tous les produits du panier" >Vider le panier</a>
 
                                        @else
                          <a class="btn btn-danger float-right  mt-5 mb-2 mx-0   disabled" href="#" title="Retirer tous les produits du panier"  aria-disabled="true">Vider le panier</a>
@@ -270,6 +275,7 @@
                           </tbody>
 </table>
 
+
                       </div>
                     </div>
                   </div>
@@ -283,10 +289,10 @@
 
 
 
-<div class="row mb-5" id="boxalarms">
+<div class="row mb-5" id="boxalarms" >
 
-                    <div class="col-md-4 col-sm-6 col-12 mt-5  col-lg-4 " >
-                        <div class="icon-wrapper wow fadeIn fonctionnality-card text-justify" data-wow-duration="1s" data-wow-delay="0.2s" style="background-color: white; ">
+                    <div class="col-md-4 col-sm-6 col-12 mt-5  col-lg-4 ml-3 mr-4" >
+                        <div class="icon-wrapper wow fadeIn fonctionnality-card text-justify" data-wow-duration="1s" data-wow-delay="0.2s" style="background-color: white;height: 250px;">
                             <div class="row">
 
                                 <div class="col-md-6 col-lg-6 col-xs-6   ">
@@ -346,7 +352,7 @@
 
 
 
-                      <table class="table table-hover col-md-4 col-lg-4 bg-white mb-0 my-5 px-4 mr-0   ">
+                      <table class="table table-hover col-md-4 col-lg-4 bg-white mb-0 mt-5 px-4 mr-3" style="height: 250px;">
                           <thead  class="thead-dark">
                         <!--  <tr>
                               <th class="text-left ">Total articles:</th>
@@ -362,13 +368,13 @@
 
                           <tbody>
 
-                          <tr>
-                              <!-- <td class="hidden pb-4 md:table-cell">-->
+                            <!--<tr>
+                             <td class="hidden pb-4 md:table-cell">
                                                               <td class="table-dark "><strong>Total articles  </strong></td>
 
                               <td>
                                   <strong>  {{ Cart::content()->count() }}</strong><br/>
-                              </td>  </tr>
+                              </td>  </tr>-->
 
 
 
@@ -380,7 +386,7 @@
 
                                <tr>
 
-                                  <td class="ta " style="background-color: orange;"><strong>Totale HT </strong></td>
+                                  <td class="ta " style="background-color: black;color: white; "><strong>HTC </strong></td>
 
                               <td>
 
@@ -391,7 +397,7 @@
 
                                <tr>
                               <!-- </td>-->
-                               <td class="table-dark "><strong>TVA(18%)  </strong></td>
+                               <td class="tab" style="background-color: black;color: white;"><strong>TVA (18%)  </strong></td>
 
                               <td>
 
@@ -402,7 +408,7 @@
 
  <tr>
 
-                                        <td class="ta " style="background-color: orange;"><strong>Total  </strong></td>
+                                        <td class="ta " style="background-color:orange;"><strong>TTC  </strong></td>
 
                               <td class="table-active">
 
@@ -468,87 +474,60 @@
 
 
 
+                    <div class="col-md-4 col-sm-6 col-12 mt-5  col-lg-4 ml-3 " >
 
-<table class="table  table-hover col-md-4 mt-5 col-lg-4 ml-1" >
-                <thead style="background: black;
+<table class="table table-bordered table-hover col-lg-3" style="text-align: center;height: 50px;">
+  <thead style="
     font-size: 1.2em;
     color: #fff;
         border-bottom-left-radius: 10px;
     border-bottom-left-radius: 10px; ">
-                <tr >
+    
+  </thead>
+  <tbody>
+       <tr>
+      <th scope="row" rowspan="2" style="background-color: black;color:white;text-align:center">Payable en </th>
 
-                        <th class="col-md-2 " style="background-color:orange;" >Payable en</th>
-
-                 
-                    </tr>
-                </thead>
-                <tbody>
-
-
-
-
-
-
-
-
-                    
-
-
-
-
-                
-
-
-
-                <form  action=" "  id="panier2" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field()}}
-                    
-                    
-
- <tr>
-                        <td  class="col-sm-8 col-lg-8 table-active">
-
-                                               <div class="">
-
-                                      <div class="form-check  form-check-inline "  >
-                                                <input class="form-check-input" type="checkbox"  value="video" id="video" >
+      <td class="font-weight-bold " colspan="2" style="background-color: white">
+     <div class="form-check  form-check-inline "  >
+                                                <input class="form-check-input" type="radio"  value="video" id="video" >
                                                 <label class="form-check-label" for="video" style="color: orange;font-weight: bold;">
-                                                    1fois
+                                                   1fois paiement à l'immédiat à l'achat
                                                 </label>
                                                </div>
-</td>
-</tr>
+   </td>  </tr>
 
-<tr >
 
-   <td>
+<tr>
+      <th scope="row" style="background-color: white">
                                           <div class="form-check  form-check-inline">
 
-                                                <input class="form-check-input" type="checkbox" value="alarme" id="alarme">
+                                                <input class="form-check-input" type="radio" value="alarme" id="alarme">
                                                 <label class="form-check-label" for="alarme" style="color: orange;font-weight: bold;">
-                                              3fois
-                                                </label>
+                                               3 fois paiement en 3 tranches dont 1 à l'achat                                                </label>
                                         </div>
-                            </div>
- 
- <td>
-</tr>
+  
+  
+     </th>
+    </tr>
+    
+   
+
+        
+  </tbody>
+
+  
+</table>
+<input type = "button" value = "<< Retour!"  onclick = "history.back()" class="px-4 py-2 text-orange  btn btn-warning mt-5 mb-0" style="background-color:black;color: orange;border-radius: 2rem ;border: 2px solid orange;" >
 
 
 
 
-                     
+                          </div><!-- end col -->
 
 
 
 
-
-
-
-
-                </tbody>
-
-            </table> 
 
 
 

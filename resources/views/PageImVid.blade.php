@@ -111,8 +111,8 @@
                         <td colspan="3" class="col-sm-12 col-lg-12 ">
 
                                           <div class="form-check  form-check-inline "  >
-                                                <input class="form-check-input" type="checkbox"  value="video" id="video" >
-                                                <label class="form-check-label" for="video" style="color: orange;font-weight: bold;">
+                                                <input class="form-check-input  @error('videochoix') is-invalid @enderror" type="checkbox"  value="video" id="video" name="videochoix">
+                                                <label class="form-check-label" for="video" style="color: orange;font-weight: bold;" >
                                                     video
                                                 </label>
                                                </div>
@@ -120,7 +120,7 @@
 
                                           <div class="form-check  form-check-inline">
 
-                                                <input class="form-check-input" type="checkbox" value="alarme" id="alarme">
+                                                <input class="form-check-input @error('alarmechoix') is-invalid @enderror" type="checkbox" value="alarme" id="alarme" name="alarmechoix">
                                                 <label class="form-check-label" for="alarme" style="color: orange;font-weight: bold;">
                                                alarme
                                                 </label>
@@ -154,9 +154,9 @@
 
                         <td colspan="3" class="col-sm-6">
 
-                         <select id="selection" name="selection" class="form-control">
-                                 <option value="{{$video->abonnementmensuel}}-Abonnement Mensuel" name="mois" selected="selected">Abonnement Mensuel 5900 </option>
-                                 <option value="{{$video->abonnementannuel}}-Abonnement Annuel">Abonnement Annuel 59000</option>
+                         <select id="selection" name="selection" class="form-control" >
+                                 <option value="{{$video->abonnementmensuel}}-Abonnement Mensuel" name="mois" >Abonnement Mensuel 5900 </option>
+                                 <option value="{{$video->abonnementannuel}}-Abonnement Annuel" selected="selected">Abonnement Annuel 59000</option>
                            </select>
                      <input type="hidden" name="textOptSelect" value=" {{$video->textOptSelect}}">
 
@@ -180,19 +180,72 @@
 
 
 
+
+
                         </td>
+
+
+
+                        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 
                     </tr>
 
-
-
-
-
-
                 </tbody>
 
-            </table> </div> </div>
+            </table> </div>
+
+</div>
+<div class="row">
+
+
+<div class="col-lg-2">
+
+
+            <button value = "<< Retour!"  onclick = "history.back()" class=" text-orange  btn btn-warning mb-0" style="background-color:black;color: orange;border-radius: 2rem ;border: 2px solid orange;" ><< Retour!</button>
+
+
+   </div>
+
+
+
+
+<div class="col-lg-4 col-lg-offset-4">
+
+
+         <i class="fa fa-solid fa-filter alignright  fa-2x mt-1 "></i>  
+
+ 
+
+   </div>
+                                      <div class="form-check  form-check-inline " id="checkint" >
+                                                <input class="form-check-input" type="checkbox"  value="interieure" id="interieure" >
+                                                <label class="form-check-label" for="interieure" style="color: orange;font-weight: bold;">
+                                                  interieure
+                                                </label>
+                                               </div>
+
+
+                                          <div class="form-check  form-check-inline">
+
+                                                <input class="form-check-input" type="checkbox" value="alarme" id="alarme">
+                                                <label class="form-check-label" for="alarme" style="color: orange;font-weight: bold;">
+                                               alarme
+                                                </label>
+                                        </div>
+
+
+</div>
+
+
 
             <hr class="invis">
 
@@ -210,6 +263,23 @@
 
                                         <h3 >{{ number_format($video->prix, 0, ',', ' ') }} FCFA</h3>
                                     </div><!-- end col -->
+
+
+                                    @if($video->id== 4 || $video->id== 6 || $video->id==7  || $video->id== 8  )
+
+<div class="form-check" id="panneau" style="padding-bottom:10px ;">
+                          <input class="form-check-input" type="radio" name="optionvideo" id="{{ $video->id }}"  value="{{ $video->optionvideo}}" >
+                                                <label class="form-check-label" for="$video->optionvideo"  id="{{ $video->id }}" style="color: orange;font-weight: bold;">
+                                                     Option  panneau Solaire : 14697F
+                                                </label>
+                                            </div>
+
+ 
+ 
+
+
+ @endif
+
                                 </div><!-- end col -->
 
 
@@ -289,6 +359,19 @@
             </div><!-- end col -->
 
 
+
+          
+
+
+
+
+
+
+
+
+
+
+
             <div class="row mb-5" id="boxalarms">
 
                 @foreach($alarmes as $alarme)
@@ -332,7 +415,7 @@
 
 
                                             <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio2" id="{{ $alarme->id }}"  value="{{ $alarme->id }}" checked="checked">
+                          <input class="form-check-input" type="radio" name="radio2" id="{{ $alarme->id }}"  value="{{ $alarme->id }}" >
                                                 <label class="form-check-label" for="flexCheckChecked"  id="{{ $alarme->id }}" style="color: orange;font-weight: bold;">
                                                      Selectionner
                                                 </label>
@@ -352,6 +435,9 @@
                         </div><!-- end col -->
                     </div><!-- end col -->
                 @endforeach
+
+
+                <
 
             </div><!-- end col -->
 
@@ -376,25 +462,46 @@
 
 
 
+
+
+
 @stop
 @push('scripts')
     <script>
 
 $(function () {
+
         document.getElementById("boxvideos").style.display = "none";
+
+
         document.getElementById("boxalarms").style.display = "none";
+
 
     $('#video').change(function() {
         $('#boxvideos').toggle();
+                        document.getElementById("checkint").style.display = " ";
+                        $('input[name="radio"]').prop('required',true);
+
+
     });
+
+
+    
 
 
     $('#alarme').change(function() {
         $('#boxalarms').toggle();
+                document.getElementById("checkint").style.display = "none";
+                                        $('input[name="radio2"]').prop('required',true);
+
+
     });
 
+     $('#selection').change(function() {
+                                        $('input[name="selection"]').prop('required',true);
 
 
+    });
 });
      
 
